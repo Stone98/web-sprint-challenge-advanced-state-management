@@ -22,7 +22,7 @@ export const addSmurf = (smurf) => {
     return dispatch => {
         dispatch({ type: FETCH_START })
         axios.post('http://localhost:3333/smurfs', smurf)
-            .then(() => {
+            .then((res) => {
                 dispatch({ type: ADD_SMURF, payload: smurf })
             })
             .catch((err) => {
