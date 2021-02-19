@@ -4,7 +4,7 @@ import Smurf from './Smurf';
 import { fetchSmurfs } from '../actions';
 
 const SmurfList = (props) => {
-    const { smurfs, isLoading, fetchSmurfs } = props;
+    const { smurfs, isLoading, error, fetchSmurfs } = props;
 
     useEffect(() => {
         fetchSmurfs();
@@ -17,7 +17,7 @@ const SmurfList = (props) => {
     return (<div className="listContainer">
         {
             smurfs.map((smurf) => {
-                return <Smurf smurf={smurf} />
+                return <Smurf smurf={smurf} key={smurf.id} />
             })
         }
     </div>);
@@ -26,7 +26,8 @@ const SmurfList = (props) => {
 const mapStateToProps = state => {
     return {
         smurfs: state.smurfs,
-        isLoading: state.isLoading
+        isLoading: state.isLoading,
+        error: state.error
     }
 }
 
