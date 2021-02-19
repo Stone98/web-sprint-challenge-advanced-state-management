@@ -1,4 +1,4 @@
-
+import { FETCH_START } from '../actions';
 export const initialState = {
     smurfs: [{
         name: 'Poppa Smurf',
@@ -19,6 +19,12 @@ export const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case (FETCH_START):
+            return ({
+                ...state,
+                isLoading: true,
+                error: ''
+            })
         default:
             return state;
     }
