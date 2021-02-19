@@ -3,6 +3,7 @@ export const FETCH_START = 'FETCH_START';
 export const FETCH_SUCCESS = 'FETCH_SUCCESS';
 export const FETCH_ERROR = 'FETCH_ERROR';
 export const ADD_SMURF = 'ADD_SMURF';
+export const SET_ERROR_MESSAGE = 'SET_ERROR_MESSAGE';
 
 export const fetchSmurfs = () => {
     return dispatch => {
@@ -14,6 +15,12 @@ export const fetchSmurfs = () => {
             .catch((err) => {
                 dispatch({ type: FETCH_ERROR, payload: err })
             })
+    }
+}
+
+export const addSmurf = () => {
+    return dispatch => {
+
     }
 }
 
