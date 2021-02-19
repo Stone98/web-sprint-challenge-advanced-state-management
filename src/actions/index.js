@@ -1,11 +1,11 @@
 import axios from 'axios';
-export const FETCH_START = 'FETCH_START';
+export const FETCH_START = 'FETCH_START'; // Constants to keep from making mistakes with code
 export const FETCH_SUCCESS = 'FETCH_SUCCESS';
 export const FETCH_FAILURE = 'FETCH_FAILURE';
 export const ADD_SMURF = 'ADD_SMURF';
 export const SET_ERROR_MESSAGE = 'SET_ERROR_MESSAGE';
 
-export const fetchSmurfs = () => {
+export const fetchSmurfs = () => { // Gets an array of smurfs from the server to be displayed in SmurfList
     return dispatch => {
         dispatch({ type: FETCH_START });
         axios.get('http://localhost:3333/smurfs')
@@ -18,7 +18,7 @@ export const fetchSmurfs = () => {
     }
 }
 
-export const addSmurf = (smurf) => {
+export const addSmurf = (smurf) => { // Allows a new smurf to be added to the array of smurfs from the server and displayed in SmurfList following the other smurfs
     return dispatch => {
         dispatch({ type: FETCH_START })
         axios.post('http://localhost:3333/smurfs', smurf)
@@ -32,7 +32,7 @@ export const addSmurf = (smurf) => {
     }
 }
 
-export const setError = (error) => {
+export const setError = (error) => { // Sets an error message for the add smurf form
     return dispatch => {
         dispatch({ type: SET_ERROR_MESSAGE, payload: error })
     }

@@ -10,7 +10,7 @@ const AddForm = (props) => {
         nickname: '',
         description: ''
     });
-    console.log(state);
+
     const handleChange = e => {
         setState({
             ...state,
@@ -21,10 +21,9 @@ const AddForm = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         if (state.name === "" || state.position === "" || state.nickname === "") {
-            setError(errorMessage);
-            return;
+            setError(errorMessage); // Returns an error message beneath the form if any of the inputs are empty
         }
-        addSmurf(state);
+        addSmurf(state); // Adds a new smurf to the list based on the data it receives from state, which gets its values from the inputs in the form
     }
 
 

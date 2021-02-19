@@ -1,5 +1,5 @@
 import { FETCH_START, FETCH_SUCCESS, FETCH_FAILURE, ADD_SMURF, SET_ERROR_MESSAGE } from '../actions';
-export const initialState = {
+export const initialState = { // Sets state with starting values
     smurfs: [],
     isLoading: false,
     error: ''
@@ -7,39 +7,39 @@ export const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case (FETCH_START):
+        case (FETCH_START): // Begins the fetch
             return ({
                 ...state,
                 isLoading: true,
                 error: ''
             })
-        case (FETCH_SUCCESS):
+        case (FETCH_SUCCESS): // Used to set state upon fetch success
             return ({
                 ...state,
                 isLoading: false,
                 error: '',
                 smurfs: action.payload
             })
-        case (FETCH_FAILURE):
+        case (FETCH_FAILURE): // Used to set state upon fetch failure
             return ({
                 ...state,
                 isLoading: false,
                 error: action.payload
             })
-        case (ADD_SMURF):
+        case (ADD_SMURF): // Used to set state when a new smurf is added
             return ({
                 ...state,
                 isLoading: false,
                 error: '',
                 smurfs: [...state.smurfs, { id: Date.now(), ...action.payload }]
             })
-        case (SET_ERROR_MESSAGE):
+        case (SET_ERROR_MESSAGE): // Used to set state when their is an error with adding a smurf via the form
             return ({
                 ...state,
                 isLoading: false,
                 error: action.payload
             })
-        default:
+        default: // Returns the initial state if none of the cases are true
             return state;
     }
 }

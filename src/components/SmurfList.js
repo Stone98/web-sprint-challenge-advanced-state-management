@@ -1,36 +1,31 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Smurf from './Smurf';
-import { fetchSmurfs } from '../actions';
 
 const SmurfList = (props) => {
-    const { smurfs, isLoading, fetchSmurfs } = props;
+    const { smurfs, isLoading } = props;
 
-    useEffect(() => {
-        fetchSmurfs();
-    }, [fetchSmurfs])
-
-    if (isLoading) {
+    if (isLoading) { // Sees if isLoading is true and displays the h1 if it is
         return <h1>Loading...</h1>;
     }
 
     return (<div className="listContainer">
         {
-            smurfs.map((smurf) => {
+            smurfs.map((smurf) => { // Maps over each smurf in the array from the server and returns them as an individual smurf to be displayed
                 return <Smurf smurf={smurf} key={smurf.id} />
             })
         }
     </div>);
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => { // Allows access to state in the redux store through props
     return {
         smurfs: state.smurfs,
         isLoading: state.isLoading
     }
 }
 
-export default connect(mapStateToProps, { fetchSmurfs })(SmurfList);
+export default connect(mapStateToProps)(SmurfList);
 
 //Task List:
 //1. Connect the smurfs and loading state values to the SmurfList component.

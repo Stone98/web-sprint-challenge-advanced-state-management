@@ -7,12 +7,13 @@ import App from "./App";
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 import reducer from './reducers';
 
 const { worker } = require('./mocks/browser');
 worker.start();
 
-const store = createStore(reducer, applyMiddleware(thunk))
+const store = createStore(reducer, applyMiddleware(thunk, logger)) // For using redux to hold state, add thunk middleware to do async actions and add logger middleware to keep track of state during actions
 const rootElement = document.getElementById("root");
 
 ReactDOM.render(
