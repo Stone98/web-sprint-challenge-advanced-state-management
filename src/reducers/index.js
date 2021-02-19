@@ -1,4 +1,4 @@
-import { FETCH_START } from '../actions';
+import { FETCH_START, FETCH_SUCCESS } from '../actions';
 export const initialState = {
     smurfs: [{
         name: 'Poppa Smurf',
@@ -24,6 +24,13 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 isLoading: true,
                 error: ''
+            })
+        case (FETCH_SUCCESS):
+            return ({
+                ...state,
+                isLoading: false,
+                error: '',
+                smurf: action.payload
             })
         default:
             return state;
