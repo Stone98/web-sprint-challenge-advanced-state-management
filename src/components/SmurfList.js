@@ -4,7 +4,7 @@ import Smurf from './Smurf';
 import { fetchSmurfs } from '../actions';
 
 const SmurfList = (props) => {
-    const { smurfs, isLoading, error, fetchSmurfs } = props;
+    const { smurfs, isLoading, fetchSmurfs } = props;
 
     useEffect(() => {
         fetchSmurfs();
@@ -26,8 +26,7 @@ const SmurfList = (props) => {
 const mapStateToProps = state => {
     return {
         smurfs: state.smurfs,
-        isLoading: state.isLoading,
-        error: state.error
+        isLoading: state.isLoading
     }
 }
 
