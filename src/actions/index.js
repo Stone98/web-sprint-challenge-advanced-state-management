@@ -13,7 +13,7 @@ export const fetchSmurfs = () => {
                 dispatch({ type: FETCH_SUCCESS, payload: res.data })
             })
             .catch((err) => {
-                dispatch({ type: FETCH_FAILURE, payload: err })
+                dispatch({ type: FETCH_FAILURE, payload: err.Response.body.Error })
             })
     }
 }
@@ -26,8 +26,15 @@ export const addSmurf = (smurf) => {
                 dispatch({ type: ADD_SMURF, payload: smurf })
             })
             .catch((err) => {
-                dispatch({ type: SET_ERROR_MESSAGE, payload: err })
+                console.log(err);
+                dispatch({ type: SET_ERROR_MESSAGE, payload: err.response.data.Error })
             })
+    }
+}
+
+export const setError = (error) => {
+    return dispatch => {
+        dispatch({ type: SET_ERROR_MESSAGE, payload: error })
     }
 }
 
